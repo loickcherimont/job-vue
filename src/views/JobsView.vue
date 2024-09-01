@@ -1,12 +1,14 @@
 <template>
-  <h1 class="text-slate-200 text-5xl">Job<span class="text-emerald-300">.</span></h1>
-  <div class="jobs flex flex-col items-center justify-around gap-8 p-3">
-    <JobPost v-for="job in jobs" :key="job.id" v-bind="job"/>
+  <div class='h-full'>
+    <h1 class="text-slate-200 text-5xl">Job<span class="text-emerald-300">.</span></h1>
+    <div class="jobs flex flex-col md:flex-row md:h-screen items-center justify-around gap-8 p-3">
+      <JobPost v-for="job in jobs" :key="job.id" v-bind="job" />
+    </div>
   </div>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
-import JobPost from './components/JobPost.vue';
+import JobPost from '@/components/JobPost.vue';
 
 const jobs = ref(null);
 
@@ -27,9 +29,9 @@ onMounted(() => {
 
       throw Error('Server error!');
     })();
-  } catch(e) {
+  } catch (e) {
     console.error(e.Message);
   }
-  
+
 })
 </script>
